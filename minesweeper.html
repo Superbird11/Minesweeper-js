@@ -1,0 +1,40 @@
+<html>
+<head>
+	<title>Minesweeper</title>
+	<link rel="stylesheet" type="text/css" href="minesweeper.css">
+	<script src="msbase.js" type="text/javascript"></script>
+	<script src="mssquare.js" type="text/javascript"></script>
+	<script src="mssetup.js" type="text/javascript"></script>
+	<script src="msboard.js" type="text/javascript"></script>
+	<script src="msutils.js" type="text/javascript"></script>
+	<script src="msaction.js" type="text/javascript"></script>
+	<script src="mscopy.js" type="text/javascript"></script>
+	<script src="mscheck.js" type="text/javascript"></script>
+	<script src="msfinal.js" type="text/javascript"></script>
+	<script src="msaicore.js" type="text/javascript"></script>
+	<script src="msaifront.js" type="text/javascript"></script>
+	<script src="mstouch.js" type="text/javascript"></script>
+</head>
+<body onload="loadMinesweeper();">
+	<div id="other-2"></div>
+	<div id="other-1"></div>
+	<div id="board">
+		<!-- placeholder images - getting them to load early -->
+		<img src="assets/square0.png" />
+		<img src="assets/square1.png" />
+		<img src="assets/square2.png" />
+		<img src="assets/square3.png" />
+		<img src="assets/square4.png" />
+		<img src="assets/square5.png" />
+		<img src="assets/square6.png" />
+		<img src="assets/square7.png" />
+		<img src="assets/square8.png" />
+		<img src="assets/squareMine.png" />
+		<img src="assets/squareMineTripped.png" />
+		<img src="assets/squareMineFake.png" />
+	</div>
+	<br><br><div id="other1">TEXT</div>
+	<div id="other2"></div>
+	<button id="aiButton" class="aiButtonClass" onclick="AIChooseMove();">Let the AI choose</button>
+</body>
+</html>
