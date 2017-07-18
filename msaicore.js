@@ -87,26 +87,6 @@ function findUsefulUnrevealedTiles() {
 	if ( width > height ) { r = width; }
 	return withinRangeCondition( 0, 0, r,
 		function(a,b){return !board[a][b].revealed && !board[a][b].flagged && numAdjacentRevealed(a,b) > 0;} );
-	/*
-	var unrevealedTiles = [];
-	for ( var x = 0; x < height; x++ ) {
-		for ( var y = 0; y < width; y++ ) {
-			var n = 0;
-			if ( !board[x][y].revealed && !board[x][y].flagged ) {
-				if ( x > 0 && board[x-1][y].revealed ) { n++; }
-				if ( x > 0 && y < (width - 1) && board[x-1][y+1].revealed ) { n++; }
-				if ( y < (width - 1) && board[x][y+1].revealed ) { n++; }
-				if ( x < (height - 1) && y < (width - 1) && board[x+1][y+1].revealed ) { n++; }
-				if ( x < (height - 1) && board[x+1][y].revealed ) { n++; }
-				if ( x < (height - 1) && y > 0 && board[x+1][y-1].revealed ) { n++; }
-				if ( y > 0 && board[x][y-1].revealed ) { n++; }
-				if ( x > 0 && y > 0 && board[x-1][y-1].revealed ) { n++; }
-				if ( n > 0 ) { unrevealedTiles.push( board[x][y] ); }
-			}
-		}
-	}
-	return unrevealedTiles;
-	*/
 }
 
 // Searches the board and returns an array of tiles that have been
@@ -117,16 +97,6 @@ function findUsefulRevealedTiles() {
 	if ( width > height ) { r = width; }
 	return withinRangeCondition( 0, 0, r, 
 		function(a,b){ return board[a][b].revealed && numAdjacentUnrevealed(a,b) > 0; } );
-	/*var revealedTiles = [];
-	for ( var x = 0; x < height; x++ ) {
-		for ( var y = 0; y < width; y++ ) {
-			var n = 0;
-			if ( board[x][y].revealed ) {
-				if ( numAdjacentUnrevealed( x, y ) > 0 ) { revealedTiles.push( board[x][y] ); }
-			}
-		}
-	}
-	return revealedTiles;*/
 }
 
 // Using an array of revealed tiles, constructs a corresponding array of the net
