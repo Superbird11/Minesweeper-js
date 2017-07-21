@@ -20,6 +20,10 @@ function AIGetMove() {
 	// Get our lists of tiles
 	var unrevealedTiles = findUsefulUnrevealedTiles();
 	var revealedTiles = findUsefulRevealedTiles();
+	if ( revealedTiles.length == 0 ) {
+		// Then we know nothing; it would be entirely guesswork from here on out.
+		return [[],[]]
+	}
 	// Generate the matrices we'll need to find flaggable tiles
 	var solVector = getSolVector( revealedTiles );
 	var mulVector = getMulVector( revealedTiles, unrevealedTiles );
