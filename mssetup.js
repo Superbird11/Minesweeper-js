@@ -90,7 +90,8 @@ function loadMinesweeper() {
 	// Verify parameters, and if valid then set.
 	if ( !w || isNaN( w ) || w < minWidth ) { width = defaultWidth; } else { width = (w / 1); }
 	if ( !h || isNaN( h ) || h < minHeight ) { height = defaultHeight; } else { height = (h / 1); }
-	if ( !m || isNaN( m ) || m < minMines ) { numMines = defaultMines; } else { numMines = (m / 1); }
+	if ( !m || isNaN( m ) || m < minMines  ) { numMines = defaultMines; } else { numMines = (m / 1); }
+	if ( numMines > (width * height - 9) ) { numMines = width * height - 9; }
 	mineCt = numMines;
 	minesLeft = numMines;
 
