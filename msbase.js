@@ -13,12 +13,22 @@ function MinesweeperTile( xc, yc, imgp ) {
 // Global variables
 var board = null;
 var boardGenerated = false;
-var height = 16;
-var width = 30;
-var numMines = 99;
+
 var gameOver = false;
 var time = 0;
 var timer = null;
+
+var minHeight = 8;
+var minWidth = 8;
+var minMines = 1;
+var defaultHeight = 16;
+var defaultWidth = 30;
+var defaultMines = 99;
+
+var height = defaultHeight;
+var width = defaultWidth;
+var numMines = defaultMines;
+
 var mineCt = numMines;
 var minesLeft = numMines;
 let mineThreshold = 4;

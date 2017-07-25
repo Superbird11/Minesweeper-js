@@ -80,6 +80,20 @@ function generateBoard( x, y ) {
 
 // Initializes a game of Minesweeper.
 function loadMinesweeper() {
+	// First, get parameters from URL
+	var url = window.location.href;
+
+	var w = /w=([^&]+)/.exec(url)[1];
+	var h = /h=([^&]+)/.exec(url)[1];
+	var m = /m=([^&]+)/.exec(url)[1];
+
+	// Verify parameters, and if valid then set.
+	if ( !w || isNaN( w ) || w < minWidth ) { width = defaultWidth; } else { width = (w / 1); }
+	if ( !h || isNaN( h ) || h < minHeight ) { height = defaultHeight; } else { height = (h / 1); }
+	if ( !m || isNaN( m ) || m < minMines ) { numMines = defaultMines; } else { numMines = (m / 1); }
+	mineCt = numMines;
+	minesLeft = numMines;
+
 	// Initialize visual element
 	var boardHTML = "<table id=\"squareBoardTable\" class=\"boardTable\" unselectable=\"on\">";
 	// Print top row

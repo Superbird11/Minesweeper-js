@@ -1,0 +1,65 @@
+<html>
+<head>
+	<title>Minesweeper: Set up</title>
+
+	<script>
+	function goToGame() {
+		var heightInput = document.getElementById("msInputHeight").value;
+		var widthInput = document.getElementById("msInputWidth").value;
+		var minesInput = document.getElementById("msInputMines").value;
+		var gameURL = "./minesweeper.html?h=" + heightInput + "&w=" + widthInput + "&m=" + minesInput;
+		window.location.href = gameURL;
+	}
+	</script>
+
+	<script>
+	function setBeginner() {
+		document.getElementById("msInputHeight").value = "8";
+		document.getElementById("msInputWidth").value = "8";
+		document.getElementById("msInputMines").value = "10";
+	}
+
+	function setIntermediate() {
+		document.getElementById("msInputHeight").value = "16";
+		document.getElementById("msInputWidth").value = "16";
+		document.getElementById("msInputMines").value = "40";
+	}
+
+	function setAdvanced() {
+		document.getElementById("msInputHeight").value = "16";
+		document.getElementById("msInputWidth").value = "30";
+		document.getElementById("msInputMines").value = "99";
+	}
+
+	function setExpert() {
+		document.getElementById("msInputHeight").value = "24";
+		document.getElementById("msInputWidth").value = "30";
+		document.getElementById("msInputMines").value = "200";
+	}
+	</script>
+</head>
+<body>
+		<h3>Please choose the options for your game of Minesweeper:</h3>
+
+		<span class="presets">(Presets: 
+		<button onclick="setBeginner();">Beginner</button>
+		<button onclick="setIntermediate();">Intermediate</button>
+		<button onclick="setAdvanced();">Advanced</button>
+		<button onclick="setExpert();">Expert</button><br/><br/>
+
+		<span class="description">Height:</span>
+		<input class="msInput" id="msInputHeight" type="text" name="widthInput" value="16" />
+		<span class="admonish">(At least 8)</span><br/>
+
+		<span class="description">Width:</span>
+		<input class="msInput" id="msInputWidth" type="text" name="heightInput" value="30" />
+		<span class="admonish">(At least 8)</span><br/>
+
+		<span class="description">Mines:</span>
+		<input class="msInput" id="msInputMines" type="text" name="minesInput" value="99" />
+		<span class="admonish">(At least 1, at most (Height*width-9))</span><br/>
+
+		<br/>
+		<button onclick="goToGame();">Start Game</button>
+</body>
+</html>
