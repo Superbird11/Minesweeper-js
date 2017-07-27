@@ -12,7 +12,7 @@
  **   that's not a huge issue.
  *
  * Dependencies:
- ** > msbase.js - defines the board and tiles
+ ** > msbase.js - defines the tiles' datatype
  ** > minesweeper.css - defines default board highlight color (in table's 
  **     background-color attribute)
  */
@@ -20,7 +20,7 @@
 // Internal list of tiles that have been highlighted
 var highlightedTiles = [];
 // Opacity constant defined here, defines degree of highlight
-let opacityConstant = 0.5;
+let opacityConstant = 0.6;
 
 // Sets the highlight color (the table's background color) to the given value
 function setHighlightColor( val ) {
@@ -39,12 +39,11 @@ function setOpacityConstant( val ) {
 //   so as to give the illusion of highlighting it against the
 //   colored background.
 // Also registers having done so.
-function highlightTile( x, y ) {
-	var tile = board[x][y];
+function highlightTile( tile ) {
 	var img = tile.obj;
 
 	// Now, register the tile in an internal registry of tiles that have been highlighted
-	highlightedTiles.add( tile );
+	highlightedTiles.push( tile );
 	// Finally, "highlight" tile by setting opacity to half
 	img.style.opacity = opacityConstant;
 }
@@ -54,8 +53,7 @@ function highlightTile( x, y ) {
 //   colored background.
 // Also registers having done so, removing the tile from the list of
 //   highlighted tiles.
-function unhighlightTile( x, y ) {
-	var tile = board[x][y];
+function unhighlightTile( tile ) {
 	var img = tile.obj;
 
 	// Remove the tile from the internal registry, if it's there
@@ -70,6 +68,6 @@ function unhighlightTile( x, y ) {
 // Unhighlights all the tiles that are currently registered as being highlighted.
 function unhighlightAllTiles() {
 	for ( var i = 0; i < highlightedTiles.length; i++ ) {
-		unhighlightTile( highlightedTiles[i].x, highlightedTiles[i].y );
+		unhighlightTile( highlightedTiles[i] );
 	}
 }

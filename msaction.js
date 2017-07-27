@@ -40,6 +40,15 @@ function tileClicked( x, y, img ) {
 			// it was a guess. Reshuffle.
 			reshuffle( x, y );
 		}
+		else {
+			// highlight the wrong guesses
+			for ( var i = 0; i < aimoves[0].length; i++ ) {
+				highlightTile( aimoves[0][i] );
+			}
+			for ( var i = 0; i < aimoves[1].length; i++ ) {
+				highlightTile( aimoves[1][i] );
+			}
+		}
 	}
 
 	tile.revealed = true;
