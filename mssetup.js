@@ -83,15 +83,25 @@ function loadMinesweeper() {
 	// First, get parameters from URL
 	var url = window.location.href;
 
-	var w = /w=([^&]+)/.exec(url)[1];
-	var h = /h=([^&]+)/.exec(url)[1];
-	var m = /m=([^&]+)/.exec(url)[1];
+	// Account for an empty address bar. If there are any errors, just go to defaults.
+	try {
+		// Otherwise, read in parameters and use them
+		var w = /w=([^&]+)/.exec(url)[1];
+		var h = /h=([^&]+)/.exec(url)[1];
+		var m = /m=([^&]+)/.exec(url)[1];
 
-	// Verify parameters, and if valid then set.
-	if ( !w || isNaN( w ) || w < minWidth ) { width = defaultWidth; } else { width = (w / 1); }
-	if ( !h || isNaN( h ) || h < minHeight ) { height = defaultHeight; } else { height = (h / 1); }
-	if ( !m || isNaN( m ) || m < minMines  ) { numMines = defaultMines; } else { numMines = (m / 1); }
-	if ( numMines > (width * height - 9) ) { numMines = width * height - 9; }
+		// Verify parameters, and if valid then set.
+		// Divide by 1 to turn strings into numbers with no hassle
+		if ( !w || isNaN( w ) || w < minWidth ) { width = defaultWidth; } else { width = (w / 1); }
+		if ( !h || isNaN( h ) || h < minHeight ) { height = defaultHeight; } else { height = (h / 1); }
+		if ( !m || isNaN( m ) || m < minMines  ) { numMines = defaultMines; } else { numMines = (m / 1); }
+		if ( numMines > (width * height - 9) ) { numMines = width * height - 9; }
+	} catch ( err ) {
+		width = defaultWidth;
+		height = defaultHeight;
+		numMines = defaultMines;
+	}
+
 	mineCt = numMines;
 	minesLeft = numMines;
 
