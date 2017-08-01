@@ -24,6 +24,7 @@ function gotGameOver( x, y ) {
 			}
 			else if ( !board[i][j].isMine && board[i][j].flagged ) {
 				board[i][j].obj.src = tileMineFake;
+				unhighlightAllTiles();
 			}
 		}
 	}
